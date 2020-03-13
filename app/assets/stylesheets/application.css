@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ @import 'bootstrap/dist/css/bootstrap';
+
+
+.absolute-header-text{
+  position: absolute;
+  top: 250px;
+  z-index: 44444;
+  width: 350px;
+  margin: 0 50px;
+}
+
+.carousel img{
+  opacity: 0.8;
+}
+
+.slide-in-elliptic-top-fwd{animation:slide-in-elliptic-top-fwd .7s cubic-bezier(.25,.46,.45,.94) both}
+@keyframes slide-in-elliptic-top-fwd{0%{transform:translateY(-600px) rotateX(-30deg) scale(0);transform-origin:50% 100%;opacity:0}100%{transform:translateY(0) rotateX(0) scale(1);transform-origin:50% 1400px;opacity:1}}
