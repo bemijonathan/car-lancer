@@ -19,7 +19,7 @@
 .absolute-header-text{
   position: absolute;
   top: 250px;
-  z-index: 44444;
+  z-index: 1;
   width: 350px;
   margin: 0 50px;
 }
