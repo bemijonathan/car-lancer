@@ -10,7 +10,9 @@
   </head>
 
   <body>
+  
     <%= render "layouts/nav" %>
+    <%= flash[:notice].to_json %>
     <%= yield %>
   </body>
 </html>
