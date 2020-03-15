@@ -9,3 +9,11 @@ anchors.forEach(e => {
     e.classList.add('active')
   }
 })
+
+let form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  let term = event.target.search.value
+  window.location.assign(`/search?search=${term}`)
+})

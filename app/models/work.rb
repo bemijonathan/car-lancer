@@ -4,5 +4,5 @@ class Work < ApplicationRecord
     has_many :photo
     
     validates :bid, :description, presence: true
-    validates :description , length: {minimun: 20}
+    # validates :description , length: {minimun: 20}
 end
