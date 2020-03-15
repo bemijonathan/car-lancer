@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
 
   def login
   end
+
+  def search
+    @name = params[:search]
+    # render "application/search"
+  end
 end
