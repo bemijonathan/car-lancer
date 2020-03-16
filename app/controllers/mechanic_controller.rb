@@ -1,12 +1,12 @@
 class MechanicController < ApplicationController
 
         
-  def index
+  # def index
     
-  end
+  # end
   
-  def show
-  end
+  # def show
+  # end
   
   def create
     @mechanic =  Mechanic.new(post_params)
@@ -17,20 +17,20 @@ class MechanicController < ApplicationController
         redirect_to '/'
     else
         flash[:notice] = @mechanic.errors.messages
-        render 'application/signup'
+        render 'application/login'
     end
   end
   
-  def edit
-  end
+  # def edit
+  # end
   
-  def update
+  # def update
     
-  end
+  # end
   
-  def destroy
+  # def destroy
     
-  end
+  # end
   
   private
 

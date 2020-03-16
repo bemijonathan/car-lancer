@@ -1,32 +1,36 @@
 class UserController < ApplicationController
       
-  def index
+  # def index
     
-  end
+  # end
   
-  def show
-  end
+  # def show
+  # end
   
   def create
     @user =  User.new(post_params)
     if @user.save
         flash[:notice] = "succesfully created an account"
+        session[:user_id] = @mechanic.id
+        session[:email] = @mechanic.email
+        redirect_to '/'
+        
     else
         flash[:notice] = @user.errors.messages
         render 'application/signup'
     end
   end
   
-  def edit
-  end
+  # def edit
+  # end
   
-  def update
+  # def update
     
-  end
+  # end
   
-  def destroy
+  # def destroy
     
-  end
+  # end
   
   private
 

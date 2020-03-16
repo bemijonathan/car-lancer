@@ -12,7 +12,14 @@ class ApplicationController < ActionController::Base
   def about
   end
 
+  def logout
+    session[:user_id] = nil
+    session[:email] = nil
+    redirect_to '/'
+  end
+
   def login
+    logged_in
   end
 
   def search
@@ -31,8 +38,6 @@ class ApplicationController < ActionController::Base
     if @current_user
       flash[:notice] = "you are logged in already"
       redirect_to '/'
-    else
-      redirect_to 'login'
     end
   end
 end

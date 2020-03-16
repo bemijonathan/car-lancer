@@ -13,13 +13,48 @@
  *= require_tree .
  *= require_self
  */
- @import 'bootstrap/dist/css/bootstrap';
+@import 'bootstrap/dist/css/bootstrap';
 
- .hidden {
-   display: none;
- }
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
 
-.absolute-header-text{
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+    min-height: 100vh;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+.alert-dismissible {
+  z-index: 4444444;
+  top: 100px;
+  width: 50%;
+  position: absolute;
+  right: 10px;
+}
+
+.absolute-header-text {
   position: absolute;
   top: 250px;
   z-index: 1;
@@ -27,9 +62,24 @@
   margin: 0 50px;
 }
 
-.carousel img{
+.carousel img {
   opacity: 0.8;
 }
 
-.slide-in-elliptic-top-fwd{animation:slide-in-elliptic-top-fwd .7s cubic-bezier(.25,.46,.45,.94) both}
-@keyframes slide-in-elliptic-top-fwd{0%{transform:translateY(-600px) rotateX(-30deg) scale(0);transform-origin:50% 100%;opacity:0}100%{transform:translateY(0) rotateX(0) scale(1);transform-origin:50% 1400px;opacity:1}}
+.slide-in-elliptic-top-fwd {
+  animation: slide-in-elliptic-top-fwd .7s cubic-bezier(.25, .46, .45, .94) both
+}
+
+@keyframes slide-in-elliptic-top-fwd {
+  0% {
+    transform: translateY(-600px) rotateX(-30deg) scale(0);
+    transform-origin: 50% 100%;
+    opacity: 0
+  }
+
+  100% {
+    transform: translateY(0) rotateX(0) scale(1);
+    transform-origin: 50% 1400px;
+    opacity: 1
+  }
+}
