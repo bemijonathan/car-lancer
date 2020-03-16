@@ -17,12 +17,19 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/login"> Login </a> 
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signup"> Sign Up</a> 
-      </li>
+      <% if @current_user == nil %>
+        <li class="nav-item">
+          <a class="nav-link" href="/login"> Login </a> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup"> Sign Up</a> 
+        </li>
+      <%else%>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout"> Log Out </a>
+        </li>
+      <% end%>
+
     </ul>
     
     <%= form_tag("/search", method: "post", class: "form-inline my-2 my-lg-0" ) do %>

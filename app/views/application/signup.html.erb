@@ -1,12 +1,21 @@
-<div class="container pt-5">
+<div class="container pt-5 signup">
     <div class="mt-5">
         <h1 class="text-center">  Sign Up </h1>
+        <%= @current_user %>
     </div>
     <%= form_tag("/user", method: "post", class: "form col-sm-6 m-auto" ) do %>
       <input class="form-control mt-3" type="text" name="name" placeholder="jane">
       <input class="form-control mt-3" type="email" name="email" placeholder="john@doe.com">
       <input class="form-control mt-3" type="password" name="password" placeholder="*********">
-      <input class="form-control mt-3 btn" type="submit" name="name" placeholder="Sign Up">
-
+      <select class="select mt-3 form-control account type">
+        <option value="user" selected> User </option>
+        <option value="mechanic"> Mechanic </option>
+      </select>
+      <input class="form-control mt-3 hidden" type="tel" name="phone" placeholder="+234534433">
+      <input class="form-control mt-3 hidden" type="text" name="bussinessname" placeholder="john Mechanics ltd.">
+      <input class="form-control mt-3 btn" type="submit" placeholder="Sign Up">
     <% end %>
 </div>
+
+
+<%= javascript_pack_tag 'signup' %>
