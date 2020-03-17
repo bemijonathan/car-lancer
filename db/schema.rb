@@ -49,7 +49,9 @@ ActiveRecord::Schema.define(version: 2020_03_14_105700) do
 
   create_table "works", force: :cascade do |t|
     t.string "description"
-    t.string "bid"
+    t.string "title"
+    t.integer "amount"
+    t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

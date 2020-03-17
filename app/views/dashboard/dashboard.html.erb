@@ -2,14 +2,15 @@
   <!-- Sidebar -->
   <div class="bg-light border-right col-sm-2" id="sidebar-wrapper">
     <div class="sidebar-heading"> <b> Dashboard </b> </div>
-    <%= #if a.class.table_name %>
-    <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action bg-light">Statistics</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Recent Bid</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Works</a>
-    </div>
+    <% if @current_user.class.table_name %>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Statistics</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Recent Bid</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Works</a>
+      </div>
+    <% end %>
   </div>
   <!-- /#sidebar-wrapper -->
   <!-- Page Content -->

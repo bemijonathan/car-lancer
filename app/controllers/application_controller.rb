@@ -34,6 +34,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate
+    if @current_user
+      return true
+    else
+      redirect_to '/login'
+    end
+  end
+
   def logged_in
     if @current_user
       flash[:notice] = "you are logged in already"

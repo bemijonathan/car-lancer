@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   get 'signup' => "application#signup"
   post 'search' => "application#search"
   get 'search' => "application#search"
+  post 'user/login' => "user#login"
+  post 'mechanic/login' => "mechanic#login"
   resources :user
   resources :mechanic
+  resources :job
   get 'dashboard' => "dashboard#dashboard"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
