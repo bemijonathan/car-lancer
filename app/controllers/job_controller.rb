@@ -10,7 +10,7 @@ class JobController < ApplicationController
   
     def create
       @work = Work.new(params_expected)
-      @work.user = @current_user
+      @work.user_id = @current_user.id
       if @work.save
         flash[:notice] = "saved"
         redirect_to '/'

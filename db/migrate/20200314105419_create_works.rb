@@ -5,6 +5,7 @@ class CreateWorks < ActiveRecord::Migration[6.0]
       t.string :title
       t.integer :amount
       t.string :location
+      t.belongs_to :user, index: true
 
       t.timestamps
     end
