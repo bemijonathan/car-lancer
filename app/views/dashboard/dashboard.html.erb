@@ -45,28 +45,28 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3">
-          <% if !@myPost.blank? %>
+          <% if @myPost.count != 0 %>
             <% for item in @myPost %>
               <%= item.title %>
             <% end %>
           <% end %>
         </div>
         <div class="col-sm-3">
-          <% if !@myPost.blank? %>
+          <% if @myPost.count != 0 %>
             <% for item in @myPost %>
               <%= item.title %>
             <% end %>
           <% end %>
         </div>
         <div class="col-sm-3">
-          <% if !@myPost.blank? %>
+          <% if @myPost.count != 0 %>
             <% for item in @myPost %>
               <%= item.title %>
             <% end %>
           <% end %>
         </div>
         <div class="col-sm-3">
-          <% if !@myPost.blank? %>
+          <% if @myPost.count != 0 %>
             <% for item in @myPost %>
               <%= item.title %>
             <% end %>
