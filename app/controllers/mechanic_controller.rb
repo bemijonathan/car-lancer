@@ -1,9 +1,9 @@
 class MechanicController < ApplicationController
 
         
-  # def index
-    
-  # end
+  def index
+    @mechanic = Mechanic.all
+  end
   
   # def show
   # end

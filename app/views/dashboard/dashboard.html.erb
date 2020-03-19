@@ -4,6 +4,12 @@
     <div class="sidebar-heading"> <b> Dashboard </b> </div>
     <% if @current_user.class.table_name === "users" %>
       <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light"> My Profile</a>
+        <a href="/mechanic" class="list-group-item list-group-item-action bg-light">Find Mechanics</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Recent Post</a>
+      </div>
+    <% else %>
+      <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light">Statistics</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>

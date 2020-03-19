@@ -15,8 +15,12 @@ ActiveRecord::Schema.define(version: 2020_03_14_105700) do
   create_table "biddings", force: :cascade do |t|
     t.string "amount"
     t.string "description"
+    t.integer "work_id"
+    t.integer "mechanic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["mechanic_id"], name: "index_biddings_on_mechanic_id"
+    t.index ["work_id"], name: "index_biddings_on_work_id"
   end
 
   create_table "mechanics", force: :cascade do |t|
@@ -33,8 +37,10 @@ ActiveRecord::Schema.define(version: 2020_03_14_105700) do
 
   create_table "photos", force: :cascade do |t|
     t.string "name"
+    t.integer "word_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["word_id"], name: "index_photos_on_word_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,9 +55,13 @@ ActiveRecord::Schema.define(version: 2020_03_14_105700) do
 
   create_table "works", force: :cascade do |t|
     t.string "description"
-    t.string "bid"
+    t.string "title"
+    t.integer "amount"
+    t.string "location"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_works_on_user_id"
   end
 
 end
