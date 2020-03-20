@@ -3,5 +3,6 @@ class DashboardController < ApplicationController
 
   def dashboard
     @myPost = @current_user.works
+    
   end
 end

@@ -6,15 +6,15 @@
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light"> My Profile</a>
         <a href="/mechanic" class="list-group-item list-group-item-action bg-light">Find Mechanics</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Recent Post</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Posts</a>
       </div>
     <% else %>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Statistics</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Recent Bid</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Works</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Ratings</a>
       </div>
     <% end %>
   </div>
@@ -65,7 +65,7 @@
               <h5 class="card-title text-center"> <i class="gg-info"></i> Post Counts</h5>
               <h6 class="card-subtitle mb-3 text-muted"></h6>
               <div class="card-text">
-                <h3 class="text-center"> 13 Posts  </h3>
+                <h3 class="text-center"> <%= @myPost.length%>  </h3>
                 <p class="text-center"> From different Locations </p>
               </div>
               <%# <a href="#" class="card-link">Card link</a>
@@ -79,7 +79,7 @@
               <h5 class="card-title text-center"> <i class="gg-info"></i> Post Counts</h5>
               <h6 class="card-subtitle mb-3 text-muted"></h6>
               <div class="card-text">
-                <h3 class="text-center"> 13 Posts  </h3>
+                <h3 class="text-center"> <%= @myPost.length%>  </h3>
                 <p class="text-center"> From different Locations </p>
               </div>
               <%# <a href="#" class="card-link">Card link</a>
@@ -93,7 +93,7 @@
               <h5 class="card-title text-center"> <i class="gg-info"></i> Post Counts</h5>
               <h6 class="card-subtitle mb-3 text-muted"></h6>
               <div class="card-text">
-                <h3 class="text-center"> 13 Posts  </h3>
+                <h3 class="text-center"> <%= @myPost.length%>  </h3>
                 <p class="text-center"> From different Locations </p>
               </div>
               <%# <a href="#" class="card-link">Card link</a>
@@ -118,27 +118,17 @@
                     </i>
                   </div>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Find Jobs</a>
-                    <a class="dropdown-item" href="#">Notifications</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#">Log Out</a>
+                    <a class="dropdown-item" href="#">Today</a>
+                    <a class="dropdown-item" href="#">Latest</a>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <%= render 'dashboard/notification'%>
             </div>
           </div>
-          <% if @myPost.count != 0 %>
-            <% for item in @myPost %>
-              <%= item.title %>
-            <% end %>
-          <% end %>
+          
         </div>
         <%# end %>
         <%# message bar %>
@@ -146,7 +136,7 @@
           <div class="card mt-5">
             <div class="card-header py-3 d-flex align-items-center">
               <i class="gg-inbox"></i>
-              <p class="mx-3 my-0">Notifications</p>
+              <p class="mx-3 my-0">Mechanics</p>
               <div class="text-right flex-grow-1 ">
                 <div class="nav-item dropdown">
                   <div class="p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,10 +144,10 @@
                     </i>
                   </div>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Find Jobs</a>
-                    <a class="dropdown-item" href="#">Notifications</a>
+                    <a class="dropdown-item" href="#">Find Mechanics</a>
+                    <a class="dropdown-item" href="#">Best Mechanics</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#">Log Out</a>
+                    <a class="dropdown-item text-success" href="#">New Chat</a>
                   </div>
                 </div>
               </div>
