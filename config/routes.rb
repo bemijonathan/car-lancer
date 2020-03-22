@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :user
   resources :mechanic
   resources :job
+  get 'alljobs' => "job#all"
   get 'dashboard' => "dashboard#dashboard"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

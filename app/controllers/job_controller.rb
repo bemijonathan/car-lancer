@@ -1,7 +1,7 @@
 class JobController < ApplicationController
     before_action :authenticate
 
-    def index
+    def all
       @work = Work.all().limit(10)
     end
   

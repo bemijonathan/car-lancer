@@ -17,9 +17,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/job">Post a Job</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/mechanic">Find Mechanics</a>
-      </li>
+      <% if @current_user.class.table_name === "users" %>
+        <li class="nav-item">
+          <a class="nav-link" href="/mechanic">Find Mechanics</a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="/alljobs">Find Bids</a>
+        </li>
+      <% end %>
+     
     </ul>
     <ul class="navbar-nav">
       <% if @current_user == nil %>

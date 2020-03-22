@@ -4,17 +4,16 @@
     <div class="sidebar-heading"> <b> Dashboard </b> </div>
     <% if @current_user.class.table_name === "users" %>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light"> My Profile</a>
+        <a href="<%= "/user/#{@current_user.id}" %>" class="list-group-item list-group-item-action bg-light"> My Profile</a>
         <a href="/mechanic" class="list-group-item list-group-item-action bg-light">Find Mechanics</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My Posts</a>
       </div>
     <% else %>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="<%= "/mechanic/#{@current_user.id}" %>" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Recent Bid</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Ratings</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Messages</a>
+        <a href="/alljobs" class="list-group-item list-group-item-action bg-light">Bids</a>
       </div>
     <% end %>
   </div>
@@ -58,50 +57,11 @@
       </section>
       <%# <section header end> %>
       <%# analytics session start %>
-      <div class="row">
-        <div class="col-sm-4" >
-          <div class="card mt-5 border-0 shadow text-white" style="background-color: #21D4FD;background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);">
-            <div class="card-body">
-              <h5 class="card-title text-center"> <i class="gg-info"></i> Post Counts</h5>
-              <h6 class="card-subtitle mb-3 text-muted"></h6>
-              <div class="card-text">
-                <h3 class="text-center"> <%= @myPost.length%>  </h3>
-                <p class="text-center"> From different Locations </p>
-              </div>
-              <%# <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a> %>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card mt-5 border-0 shadow text-white" style="background-image: -webkit-linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);background-image: -moz-linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);background-image: -o-linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);">
-            <div class="card-body">
-              <h5 class="card-title text-center"> <i class="gg-info"></i> Post Counts</h5>
-              <h6 class="card-subtitle mb-3 text-muted"></h6>
-              <div class="card-text">
-                <h3 class="text-center"> <%= @myPost.length%>  </h3>
-                <p class="text-center"> From different Locations </p>
-              </div>
-              <%# <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a> %>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card mt-5 border-0 shadow text-white" style="background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);">
-            <div class="card-body">
-              <h5 class="card-title text-center"> <i class="gg-info"></i> Post Counts</h5>
-              <h6 class="card-subtitle mb-3 text-muted"></h6>
-              <div class="card-text">
-                <h3 class="text-center"> <%= @myPost.length%>  </h3>
-                <p class="text-center"> From different Locations </p>
-              </div>
-              <%# <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a> %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% if  @current_user.class.table_name === "users"  %>
+        <%= render "dashboard/userdashboard" %>
+      <% else %>
+        <%= render "dashboard/mechanicboard" %>
+      <% end %>
       <%# analytics section end %>
       <%# notifications and interaction bar %>
       <div class="row">
@@ -110,7 +70,12 @@
           <div class="card mt-5">
             <div class="card-header py-3 d-flex align-items-center">
               <i class="gg-bell"></i>
-              <p class="mx-3 my-0">Notifications</p>
+              <% if @current_user.class.table_name === "users" %>
+                <p class="mx-3 my-0">Notifications</p>
+              <% else %>
+                <p class="mx-3 my-0">Recent Jobs</p>
+              <% end %>
+              
               <div class="text-right flex-grow-1">
                 <div class="nav-item dropdown">
                   <div class="p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,7 +90,12 @@
               </div>
             </div>
             <div class="card-body">
+            <% if @current_user.class.table_name === "users"  %>
               <%= render 'dashboard/notification'%>
+            <% else %>
+              <%= render 'dashboard/mechnotification'%>
+            <% end %>
+             
             </div>
           </div>
           
@@ -136,8 +106,14 @@
           <div class="card mt-5">
             <div class="card-header py-3 d-flex align-items-center">
               <i class="gg-inbox"></i>
-              <p class="mx-3 my-0">Mechanics</p>
+              <% if @current_user.class.table_name === "users" %>
+                <p class="mx-3 my-0">Mechanics</p>
+              <% else %>
+                <p class="mx-3 my-0">Best Ratings</p>
+              <% end %>
+              
               <div class="text-right flex-grow-1 ">
+              <% if @current_user.class.table_name === "users" %>
                 <div class="nav-item dropdown">
                   <div class="p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="gg-layout-grid" style="margin-left: auto;">
@@ -150,10 +126,17 @@
                     <a class="dropdown-item text-success" href="#">New Chat</a>
                   </div>
                 </div>
+              <% end %>
+                
               </div>
             </div>
             <div class="card-body">
+            <% if @current_user.class.table_name === "users" %>
               <%= render 'dashboard/chat' %>
+            <% else %>
+              <%= render 'dashboard/star' %>
+            <% end %>
+              
             </div>
           </div>
           <% if @myPost.count != 0 %>

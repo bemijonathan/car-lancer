@@ -22,15 +22,21 @@ class UserController < ApplicationController
 
   def login
     @user = User.find_by(email: params[:email])
-    if @user.password === params[:password]
+    if @user != nil
+      if @user.password === params[:password]
         flash[:notice] = "welcome back"
         session[:user_id] = @user.id
         session[:email] = @user.email
         redirect_to '/'
+      else
+          flash[:notice] = @user.errors.messages
+          render 'application/login'
+      end
     else
-        flash[:notice] = @user.errors.messages
-        render 'application/login'
+      flash[:notice] = "incorrect user details"
     end
+
+    
   end
   
   # def edit

@@ -17,7 +17,24 @@ class MechanicController < ApplicationController
         redirect_to '/'
     else
         flash[:notice] = @mechanic.errors.messages
-        render 'application/login'
+        redirect_to '/login'
+    end
+  end
+
+  def login
+    @mechanic = Mechanic.find_by(email: params[:email])
+    if @mechanic != nil
+      if @mechanic.password === params[:password]
+        flash[:notice] = "welcome back"
+        session[:user_id] = @mechanic.id
+        session[:email] = @mechanic.email
+        redirect_to '/'
+      else
+          flash[:notice] = @mechanic.errors.messages
+          render 'application/login'
+      end
+    else
+      flash[:notice] = "incorrect details"
     end
   end
   
