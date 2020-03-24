@@ -17,7 +17,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/job">Post a Job</a>
       </li>
-      <% if @current_user.class.table_name === "users" %>
+      <% if @current_user and @current_user.class.table_name === "users" %>
         <li class="nav-item">
           <a class="nav-link" href="/mechanic">Find Mechanics</a>
         </li>

@@ -4,9 +4,25 @@ class JobController < ApplicationController
     def all
       @work = Work.all().limit(10)
     end
+
+    def newbid
+      a = Bidding.new(work_id:params[:id], mechanic_id: @current_user.id, amount:params[:amount], description:params[:description])
+      if a.save
+        flash[:notice] = "added successfully"
+        redirect_to "/job/#{params[:id]}"
+      else
+        flash[:notice] = "unable to save"
+        redirect_to "/job/#{params[:id]}"
+      end
+    end
+
+    def mypost
+      @work = Work.where(user_id: @current_user.id)
+    end
   
     def show
       @work = Work.find(params[:id])
+      @biddings = @work.biddings
     end
   
     def create

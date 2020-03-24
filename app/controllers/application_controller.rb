@@ -2,11 +2,21 @@ class ApplicationController < ActionController::Base
 
   before_action :current_user
 
+  def belongs_to_user (details)
+    if @current_user != nil and @current_user.email === details.email and  @current_user.id === details.id
+      return true
+    else
+      return false
+    end
+  end
+
   def index
   end
 
   def signup
-    logged_in
+    if logged_in
+      redirect_to '/'
+    end
   end
 
   def about
@@ -19,7 +29,11 @@ class ApplicationController < ActionController::Base
   end
 
   def login
-    logged_in
+    if logged_in
+      render '/'
+    else
+      render 'user/login'
+    end
   end
 
   def search
@@ -44,7 +58,7 @@ class ApplicationController < ActionController::Base
   def logged_in
     if @current_user
       flash[:notice] = "you are logged in already"
-      redirect_to '/'
+      return true
     end
   end
 end

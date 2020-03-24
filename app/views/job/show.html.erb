@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h2 class="pt-5">  </h2>
+  <div>
+    <div class="col-sm-6 m-auto">
+      <h1>
+        Title : <%= @work.title %>
+      </h1>
+      <p> Description : <%= @work.description %> </p>
+      <p> Created : <%=  distance_of_time_in_words @work.created_at, Time.now %> ago </p>
+      <p> Posted by : <a href="<%= "/user/#{@work.user.id}" %>" > <%= @work.user.name%> </a> </p>
+      <% if @work.user.id === @current_user.id and @work.user.email === @current_user.email %>
+        <a href="<%= "#{@work.id}/edit" %>" class="btn btn-danger"> Edit </a>
+      <% end %>
+      replies:
+      <div>
+        <% @biddings.each do |item| %>
+          <div> # <%= item.amount %> </div>
+          <p style="font-size:10px"> <%= item.mechanic.name %> </p>
+        <% end %>
+      </div>
+      <%= form_tag("/newbid/#{@work.id}", method: "post", class: "login " ) do %>
+        <input class="form-control" name="amount" placeholder="amount">
+        <input class="form-control mt-3" name="description" placeholder="description">
+        <button class="btn btn-primary mt-3"> Submit  </button>
+      <% end %>
+    </div>
+  </div>
+</div>

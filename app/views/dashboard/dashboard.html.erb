@@ -6,7 +6,8 @@
       <div class="list-group list-group-flush">
         <a href="<%= "/user/#{@current_user.id}" %>" class="list-group-item list-group-item-action bg-light"> My Profile</a>
         <a href="/mechanic" class="list-group-item list-group-item-action bg-light">Find Mechanics</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">My Posts</a>
+        <a href="/myposts" class="list-group-item list-group-item-action bg-light">My Posts</a>
+        <a href="#"> <%= @current_user.inspect %> </a>
       </div>
     <% else %>
       <div class="list-group list-group-flush">
@@ -139,11 +140,6 @@
               
             </div>
           </div>
-          <% if @myPost.count != 0 %>
-            <% for item in @myPost %>
-              <%= item.title %>
-            <% end %>
-          <% end %>
         </div>
       </div>
       <!-- /#page-content-wrapper -->

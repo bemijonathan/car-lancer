@@ -9,7 +9,7 @@ const getLocation = () => {
       iframe.src= iframe.src.replace("q=",`q=${position.coords.latitude},${position.coords.longitude}`)
       input.value = `${position.coords.latitude},${position.coords.longitude}`
     });
-    console.log()
+    console.log(`${position.coords.latitude},${position.coords.longitude}`)
   } else {
     alert("Geolocation is not supported by this browser.")
   }

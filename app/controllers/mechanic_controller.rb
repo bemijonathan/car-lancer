@@ -1,12 +1,14 @@
 class MechanicController < ApplicationController
   skip_before_action :verify_authenticity_token
+  # before_action :belongs_to_user  only: [:edit, :update, :destroy]
         
   def index
     @mechanic = Mechanic.all
   end
   
-  # def show
-  # end
+  def show
+    @mechanic = Mechanic.find(params[:id])
+  end
   
   def create
     @mechanic =  Mechanic.new(post_params)
@@ -21,7 +23,7 @@ class MechanicController < ApplicationController
     end
   end
 
-  def login
+  def signin
     @mechanic = Mechanic.find_by(email: params[:email])
     if @mechanic != nil
       if @mechanic.password === params[:password]
@@ -35,17 +37,31 @@ class MechanicController < ApplicationController
       end
     else
       flash[:notice] = "incorrect details"
+      render "mechanic/login"
+    end
+  end
+
+  def login
+  end
+  
+  def edit
+    @mechanic = Mechanic.find_by(id: params[:id])
+  end
+  
+  def update
+    @mechanic = Mechanic.find_by(id: params[:id])
+    @mechanic.update(post_params)
+    if @mechanic.save
+      flash[:notice] = "Settings saved succesfully"
+      redirect_to "/mechanic/#{params[:id]}"
+    else
+      flash[:notice] = "Failed to save"
+      render 'mechanic/edit'
     end
   end
   
-  # def edit
-  # end
-  
-  # def update
-    
-  # end
-  
   # def destroy
+  #   @mechanic = Mechanic.find_by(id: params[:id])
     
   # end
   

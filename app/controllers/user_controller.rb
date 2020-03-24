@@ -4,8 +4,9 @@ class UserController < ApplicationController
     
   # end
   
-  # def show
-  # end
+  def show
+    @user = User.find(params[:id])
+  end
   
   def create
     @user =  User.new(post_params)
@@ -20,7 +21,7 @@ class UserController < ApplicationController
     end
   end
 
-  def login
+  def signin
     @user = User.find_by(email: params[:email])
     if @user != nil
       if @user.password === params[:password]
@@ -38,13 +39,26 @@ class UserController < ApplicationController
 
     
   end
-  
-  # def edit
-  # end
-  
-  # def update
+
+  def login
     
-  # end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.update(post_params)
+    if @user.save
+      flash[:notice] = "Settings saved succesfully"
+      redirect_to "/user/#{params[:id]}"
+    else
+      flash[:notice] = "Failed to save"
+      render 'user/edit'
+    end
+  end
   
   # def destroy
     
