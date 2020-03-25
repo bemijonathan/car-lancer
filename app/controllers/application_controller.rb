@@ -46,6 +46,10 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       @current_user = User.find_by(email: session[:email]) || Mechanic.find_by(email: session[:email]) 
     end
+    if @current_user != nil
+      cookies[:user_id] = @current_user.id
+      cookies[:email] = @current_user.email
+    end
   end
 
   def authenticate

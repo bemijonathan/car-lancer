@@ -29,6 +29,11 @@ class JobController < ApplicationController
       @work = Work.new(params_expected)
       @work.user_id = @current_user.id
       if @work.save
+        ActionCable.server.broadcast(
+          "notifications_channel",
+          posted_by: "#{@work.user.name}",
+          title: "#{@work.title}"
+        )
         flash[:notice] = "saved"
         redirect_to '/'
       else
