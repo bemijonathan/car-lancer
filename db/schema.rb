@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_105700) do
+ActiveRecord::Schema.define(version: 2020_03_26_225446) do
 
   create_table "biddings", force: :cascade do |t|
     t.string "amount"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 2020_03_14_105700) do
     t.string "photo"
     t.string "location"
     t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "sender_id"
+    t.string "table_id"
+    t.integer "reciever_id"
+    t.string "content"
+    t.string "sender_class"
+    t.string "reciever_class"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

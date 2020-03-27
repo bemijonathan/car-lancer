@@ -13,6 +13,15 @@ consumer.subscriptions.create("NotificationsChannel", {
 
   received(data) {
     console.log(data, "i recieved this data")
+    let notice = document.createElement('div')
+    notice.innerHTML = `<div class="alert alert-warning alert-dismissible mt-10 fade show" role="alert">
+    <p> New Post by ${data.posted_by} </p>
+    <p> Title: ${data.title} </p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>`
+    document.body.appendChild(notice)
     // Called when there's incoming data on the websocket for this channel
   }
 });
