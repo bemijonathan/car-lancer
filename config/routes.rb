@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'search' => "application#search"
   post 'user/signin' => "user#signin"
   post 'mechanic/signin' => "mechanic#signin"
-  resources :message
+  resources :messages
   resources :user
   resources :mechanic
   resources :job

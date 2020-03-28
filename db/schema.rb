@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_225446) do
+ActiveRecord::Schema.define(version: 2020_03_28_195906) do
 
   create_table "biddings", force: :cascade do |t|
     t.string "amount"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2020_03_26_225446) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["mechanic_id"], name: "index_biddings_on_mechanic_id"
     t.index ["work_id"], name: "index_biddings_on_work_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "user__id"
+    t.integer "mechanic__id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_conversations_on_user_id"
   end
 
   create_table "mechanics", force: :cascade do |t|
@@ -36,14 +45,12 @@ ActiveRecord::Schema.define(version: 2020_03_26_225446) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "sender_id"
-    t.string "table_id"
-    t.integer "reciever_id"
-    t.string "content"
+    t.text "body"
     t.string "sender_class"
-    t.string "reciever_class"
+    t.integer "conversation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "photos", force: :cascade do |t|

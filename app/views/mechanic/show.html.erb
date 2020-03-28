@@ -17,6 +17,7 @@
       <p> <%= @mechanic.location%> </p>
       <p> <%= @mechanic.photo%> </p>
       <p> <%= @mechanic.email%> </p>
+      <a href="<%= "/messages/#{@mechanic.id}" %> " > Message </a>
       <% if @mechanic.id === @current_user.id and @mechanic.email === @current_user.email %>
         <a href="<%= "#{@mechanic.id}/edit" %>" class="btn btn-danger"> Edit </a>
       <% end %>

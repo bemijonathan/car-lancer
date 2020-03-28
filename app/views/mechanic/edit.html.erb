@@ -3,7 +3,7 @@
 
     <div class="row">
 
-     <%= form_tag("/#{@mechanic.id}", method: "patch", class: "form col-sm-6 m-auto" ) do %>
+     <%= form_tag("/mechanic/#{@mechanic.id}", method: "patch", class: "form col-sm-6 m-auto" ) do %>
       <input class="form-control mt-3" type="text" name="name" placeholder="jane" value="<%= @mechanic.name%>">
       <input class="form-control mt-3" type="email" name="email" placeholder="john@doe.com" value="<%= @mechanic.email%>">
       <input class="form-control mt-3" type="password" name="password" placeholder="*********" value="<%= @mechanic.password%>">
