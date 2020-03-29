@@ -1,5 +1,5 @@
 <div class="mt-5 pt-5 ">
-  Message 
+  Message
   <div chat class="card" style="max-height: 80vh; height:100%">
     <div class="card-header msg_head">
       <div class="d-flex bd-highlight">
@@ -8,8 +8,13 @@
           <span class="online_icon"></span>
         </div>
         <div class="user_info">
-          <span>Chat with Khalid</span>
-          <p>1767 Messages</p>
+		<% if @current_user.class.table_name === "users" %>
+		  <span style="color:black"> <%=@mechanic.name %> </span>
+		<% else %>
+		  <span style="color:black"> <%=@user.name %> </span>
+		<% end %>
+          
+          <p style="color:black" >1767 Messages</p>
         </div>
         <div class="video_cam">
           <span><i class="fas fa-video"></i></span>
@@ -27,33 +32,29 @@
       </div>
     </div>
     <div class="card-body msg_card_body">
-
-	  <% @Conversation.each do |item| %>
-<% if @current_user.class.table_name === item.sender_class %>
-	  <div class="d-flex justify-content-start mb-4">
-        <div class="img_cont_msg">
-          <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
-        </div>
-        <div class="msg_cotainer">
-          <%= item.body %>
-          <span class="msg_time">8:40 AM, Today</span>
-        </div>
-      </div>
-	  <% else %>
-	   <div class="d-flex justify-content-end mb-4">
-        <div class="msg_cotainer_send">
-          <%= item.body %>
-          <span class="msg_time_send">8:55 AM, Today</span>
-        </div>
-        <div class="img_cont_msg">
-          <img src="">
-        </div>
-      </div>
-	  <% end %>
-		
-	<% end %>
-      
-     
+      <% @Conversation.each do |item| %>
+        <% if @current_user.class.table_name === item.sender_class %>
+          <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+              <%= item.body %>
+              <span class="msg_time_send">8:55 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+              <img src="">
+            </div>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+              <%= item.body %>
+              <span class="msg_time">8:40 AM, Today</span>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
     <div class="card-footer">
       <div class="input-group">
