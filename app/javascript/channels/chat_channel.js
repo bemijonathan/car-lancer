@@ -35,18 +35,7 @@ const addMessage = (data) => {
   let message = document.createElement('div')
   console.log(name, data.from)
   // debugger
-  if (name !== data.from) {
-
-    message.innerHTML = `<div class="d-flex justify-content-end mb-4">
-    <div class="msg_cotainer_send">
-      ${data.body}
-      <span class="msg_time_send">8:55 AM, Today</span>
-    </div>
-    <div class="img_cont_msg">
-      <img src="">
-    </div>
-  </div>`
-  } else {
+  // if (name !== data.from) {
     message.innerHTML = `
     <div class="d-flex justify-content-start mb-4">
       <div class="img_cont_msg">
@@ -57,7 +46,6 @@ const addMessage = (data) => {
         <span class="msg_time">8:40 AM, Today</span>
       </div>
     </div>`
-  }
   cardBody.appendChild(message)
   let input = document.querySelector("[chat] form")
   input.reset()
