@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import 'bootstrap/dist/css/bootstrap';
+@import 'node_modules/bootstrap/dist/css/bootstrap';
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
