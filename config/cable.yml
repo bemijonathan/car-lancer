@@ -5,8 +5,8 @@ test:
   adapter: test
 
 production:
-  adapter: redis
+  adapter: async
   # url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  # url: redis://10.10.3.153:6381
-  url: redis://127.0.0.1:6379 
-  channel_prefix: carLancer_production
+  # # url: redis://10.10.3.153:6381
+  # # url: redis://127.0.0.1:6379 
+  # channel_prefix: carLancer_production
