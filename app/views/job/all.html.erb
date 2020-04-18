@@ -6,7 +6,7 @@
         <p> Problem :<%= item.title %> </p>
         <p> Location : <%= item.location %> </p>
         <p> Amount : <%= item.amount %> </p>
-        <p> <%= item.user.name %></p>
+        <a href="<%= "messages/#{item.user.id}" %>"> <p> <%= item.user.name %></p> </a>
         <div class="gmap_canvas mx-auto mt-3">
           <iframe height="300" width="100%" id="gmap_canvas" src="<%="https://maps.google.com/maps?q=#{item.location}8&&t=k&z=19&ie=UTF8&iwloc=&output=embed"%>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
           </iframe>

@@ -16,3 +16,8 @@ const getLocation = () => {
 }
 
 getLocation()
+
+
+document.querySelector('[location]').addEventListener('input', (e) => {
+  iframe.src = iframe.src.replace("q=",`q=${e.value}`)
+})

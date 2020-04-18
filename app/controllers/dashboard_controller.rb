@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
       @myPost = @current_user.biddings
     end
     # @myPost = @current_user.works
-
+    @bids = Bidding.all().limit(5)
     @job =  Work.all().limit(10)
     @mechanics = Mechanic.all.limit(10)
     

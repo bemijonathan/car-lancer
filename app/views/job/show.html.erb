@@ -8,14 +8,22 @@
       <p> Description : <%= @work.description %> </p>
       <p> Created : <%=  distance_of_time_in_words @work.created_at, Time.now %> ago </p>
       <p> Posted by : <a href="<%= "/user/#{@work.user.id}" %>" > <%= @work.user.name%> </a> </p>
+      <p> Location : <%= @work.location %> </p>
+      <div class="gmap_canvas mx-auto mt-3">
+        <iframe height="300" width="100%" id="gmap_canvas" src="<%="https://maps.google.com/maps?q=#{@work.location}8&&t=k&z=19&ie=UTF8&iwloc=&output=embed"%>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+        </iframe>
+      </div>
       <% if @work.user.id === @current_user.id and @work.user.email === @current_user.email %>
         <a href="<%= "#{@work.id}/edit" %>" class="btn btn-danger"> Edit </a>
       <% end %>
       replies:
       <div>
         <% @biddings.each do |item| %>
-          <div> # <%= item.amount %> </div>
-          <p style="font-size:10px"> <%= item.mechanic.name %> </p>
+          <div style="background:grey; padding:5px; border-radius:12px; color:white; margin:10px;">
+            <div> # <%= item.amount %> </div>
+            <div> <a href="<%= "/mechanic/#{item.mechanic.id}" %>"><%= item.mechanic.name %>  </a> </div>
+            <div style="text-align:right"> <%= distance_of_time_in_words item.created_at, Time.now %> ago </div>
+          </div>
         <% end %>
       </div>
       <%= form_tag("/newbid/#{@work.id}", method: "post", class: "login " ) do %>

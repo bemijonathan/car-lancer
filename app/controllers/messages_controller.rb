@@ -1,8 +1,6 @@
 class MessagesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
-    def index
-    end
     def show
         if @current_user.class.table_name === "users"
             @mechanic = Mechanic.find_by(id: params[:id])
@@ -50,6 +48,14 @@ class MessagesController < ApplicationController
                 body: "#{@messages.body}"
             }
             ActionCable.server.broadcast "chat_channel:#{reciever}" , data
+        end
+    end
+
+    def index
+         if @current_user.class.table_name === "users"
+            @convo = Conversation.where(user__id: @current_user.id)
+        elsif @current_user.class.table_name === "mechanics"
+            @convo = Conversation.where(mechanic__id: @current_user.id)
         end
     end
 end
