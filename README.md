@@ -5,8 +5,6 @@ Clients can get to the mechanics close to their location by creating bids
 
 ##built ❤ with Rails 6, Ruby, jquery and bootstrap 
 
-[carLancer](https://carlancer.herokuapp.com/)
-
 #Features of the app
 
 1. Registeration and Login for users and Mechanic
@@ -34,4 +32,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
