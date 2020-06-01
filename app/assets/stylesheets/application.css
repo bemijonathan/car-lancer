@@ -12,8 +12,11 @@
  *
  *= require_tree .
  *= require_self
- */
-@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+ *= require bootstrap
+
+ *//*@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';*/
+
+/*require bootstrap*/
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
