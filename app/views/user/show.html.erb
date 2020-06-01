@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <h2 class="pt-5"></h2>
+  <div>
+    <div class="col-sm-6 m-auto">
+      <h5>
+        <%= @user.name %>
+      </h5>
+      <p> <%= @user.location%> </p>
+      <p> <%= @user.email%> </p>
+      <% if @user.id === @current_user.id and @user.email === @current_user.email %>
+        <a href="<%= "#{@user.id}/edit" %>" class="btn btn-danger"> Edit </a>
+      <% end %>
+    </div>
+  </div>
+</div>

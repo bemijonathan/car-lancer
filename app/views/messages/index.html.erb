@@ -1,0 +1,27 @@
+
+<div class="container mt-5 pt-5">
+  <div class="mt-5 ">
+    <h1 class="text-center">  Messages </h1>
+  </div>
+  <% if @current_user.class.table_name === "users"  %>
+  <div class="class-list">
+    <% @convo.each do |item| %>
+        <a href="<%= "/messages/#{item.mechanic__id}" %>" class="list-group-item list-group-item-action list-group-item-primary">
+        <div class="class-list-item">
+        <%= Mechanic.find(item.mechanic__id).name%>
+        <div style="font-size:10px"> <%= item.messages.last.body%> </div>
+        </div>
+        </a>
+    <% end %>
+</div>
+  <% else %>
+    <% @convo.each do |item| %>
+        <a href="<%= "/messages/#{item.user.id}" %>" class="list-group-item list-group-item-action list-group-item-primary">
+        <div>
+            <%= item.user.name%> <br>
+            <div style="font-size:10px"> <%= item.messages.last.body%> </div>
+        </div>
+        </a>
+    <% end %>
+  <% end %>
+</div>

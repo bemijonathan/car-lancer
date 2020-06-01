@@ -1,0 +1,15 @@
+<div class="mt-5 container">
+<h1 class="pt-5 text-center"> Mechanics </h1>
+
+    <div class="row">
+        <% @mechanic.each do |mechanic| %>
+            <div class="col-sm-3 border rounded p-2">
+                <%= mechanic.photo %>
+                <p> <a href="<%="/mechanic/#{mechanic.id}"%>">  <%= mechanic.name %>  </a> </p>
+                <p> <%= mechanic.bussinessname %> </p>
+                <p> <%= mechanic.phone %> </p>
+            </div>
+        <% end %>
+    </div>
+
+</div>

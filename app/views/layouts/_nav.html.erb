@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="/">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if @current_user == nil %>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      <% else%>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <a class="nav-link" href="/job">Post a Job</a>
+      </li>
+      <% if @current_user and @current_user.class.table_name === "users" %>
+        <li class="nav-item">
+          <a class="nav-link" href="/mechanic">Find Mechanics</a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="/alljobs">Find Bids</a>
+        </li>
+      <% end %>
+     
+    </ul>
+    <ul class="navbar-nav">
+      <% if @current_user == nil %>
+        <li class="nav-item">
+          <a class="nav-link" href="/login"> Login </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup"> Sign Up</a>
+        </li>
+      <%else%>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout"> Log Out </a>
+        </li>
+      <% end%>
+    </ul>
+    <%= form_tag("/search", method: "post", class: "form-inline my-2 my-lg-0" ) do %>
+      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search by location">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <% end %>
+  </div>
+</nav>
+<%= javascript_pack_tag 'nav' %>

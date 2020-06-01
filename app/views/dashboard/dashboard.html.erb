@@ -1,0 +1,151 @@
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-light border-right col-sm-2" id="sidebar-wrapper">
+    <div class="sidebar-heading"> <b> Dashboard </b> </div>
+    <% if @current_user.class.table_name === "users" %>
+      <div class="list-group list-group-flush">
+        <a href="<%= "/user/#{@current_user.id}" %>" class="list-group-item list-group-item-action bg-light"> My Profile</a>
+        <a href="/mechanic" class="list-group-item list-group-item-action bg-light">Find Mechanics</a>
+        <a href="/myposts" class="list-group-item list-group-item-action bg-light">My Posts</a>
+        <a href="/messages" class="list-group-item list-group-item-action bg-light">Messages</a>
+      </div>
+    <% else %>
+      <div class="list-group list-group-flush">
+        <a href="<%= "/mechanic/#{@current_user.id}" %>" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="/messages" class="list-group-item list-group-item-action bg-light">Messages</a>
+        <a href="/alljobs" class="list-group-item list-group-item-action bg-light">Bids</a>
+      </div>
+    <% end %>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Account Settings</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Find Jobs</a>
+              <a class="dropdown-item" href="#">Notifications</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-danger" href="#">Log Out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <section class="d-flex align-items-center">
+        <button class="shadow-lg btn mt-5 p-3 bg-white"><i class="gg-list"></i></button>
+        <div class="ml-5 mt-5">
+          <h4>Advertisement</h4>
+          <p>This is an example dashboard created using build-in elements and components.</p>
+        </div>
+      </section>
+      <%# <section header end> %>
+      <%# analytics session start %>
+      <% if  @current_user.class.table_name === "users"  %>
+        <%= render "dashboard/userdashboard" %>
+      <% else %>
+        <%= render "dashboard/mechanicboard" %>
+      <% end %>
+      <%# analytics section end %>
+      <%# notifications and interaction bar %>
+      <div class="row">
+        <%# notifications bar %>
+        <div class="col-sm-6">
+          <div class="card mt-5">
+            <div class="card-header py-3 d-flex align-items-center">
+              <i class="gg-bell"></i>
+              <% if @current_user.class.table_name === "users" %>
+                <p class="mx-3 my-0">Notifications</p>
+              <% else %>
+                <p class="mx-3 my-0">Recent Jobs</p>
+              <% end %>
+              
+              <div class="text-right flex-grow-1">
+                <div class="nav-item dropdown">
+                  <div class="p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="gg-menu" style="margin-left: auto;">
+                    </i>
+                  </div>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Today</a>
+                    <a class="dropdown-item" href="#">Latest</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+            <% if @current_user.class.table_name === "users"  %>
+              <%= render 'dashboard/notification'%>
+            <% else %>
+              <%= render 'dashboard/mechnotification'%>
+            <% end %>
+             
+            </div>
+          </div>
+          
+        </div>
+        <%# end %>
+        <%# message bar %>
+        <div class="col-sm-6">
+          <div class="card mt-5">
+            <div class="card-header py-3 d-flex align-items-center">
+              <i class="gg-inbox"></i>
+              <% if @current_user.class.table_name === "users" %>
+                <p class="mx-3 my-0">Mechanics</p>
+              <% else %>
+                <p class="mx-3 my-0">Best Ratings</p>
+              <% end %>
+              
+              <div class="text-right flex-grow-1 ">
+              <% if @current_user.class.table_name === "users" %>
+                <div class="nav-item dropdown">
+                  <div class="p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="gg-layout-grid" style="margin-left: auto;">
+                    </i>
+                  </div>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Find Mechanics</a>
+                    <a class="dropdown-item" href="#">Best Mechanics</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-success" href="#">New Chat</a>
+                  </div>
+                </div>
+              <% end %>
+                
+              </div>
+            </div>
+            <div class="card-body">
+            <% if @current_user.class.table_name === "users" %>
+              <%= render 'dashboard/star' %>
+            <% else %>
+              <%= render 'dashboard/chat' %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+    </div>
+    <script>
+      document.querySelector('nav').classList.add('hidden')
+      document.querySelector("#menu-toggle").addEventListener('click', () => {
+        document.querySelector("#sidebar-wrapper").classList.toggle("hidden");
+      })
+    </script>

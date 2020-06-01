@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h2 class="pt-5"></h2>
+  <div>
+    <div class="col-sm-6 m-auto">
+      <p class="text-center">
+        <% if @mechanic.photo != nil %>
+          <img src="<%=@mechanic.photo %>" width="150" class="round"/>
+        <% else %>
+          <img src="/default.png" width="150" class="round mx-auto">
+        <% end %>
+      </p>
+      <h5>
+        <%= @mechanic.bussinessname %>
+      </h5>
+      <p> <%= @mechanic.name%> </p>
+      <p> <%= @mechanic.phone%> </p>
+      <p> <%= @mechanic.location%> </p>
+      <p> <%= @mechanic.photo%> </p>
+      <p> <%= @mechanic.email%> </p>
+      <% if @current_user.class.table_name === "users" %>
+        <a href="<%= "/messages/#{@mechanic.id}" %> " > Message </a>
+      <% end %>
+      <% if @mechanic.id === @current_user.id and @mechanic.email === @current_user.email %>
+        <a href="<%= "#{@mechanic.id}/edit" %>" class="btn btn-danger"> Edit </a>
+      <% end %>
+      <p> Rating: 4.5 </p>
+    </div>
+  </div>
+</div>

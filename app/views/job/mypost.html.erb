@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h2 class="pt-5">  </h2>
+  <div>
+    <div class="col-sm-6 m-auto border">
+      <% @work.each do |item| %>
+        <p> TITLE :  <%= item.title %> </p>
+        <p> DESCRIPTION : <%= item.description %>
+          <div>
+            <% item.biddings.each do |item| %>
+              <p> <%= item.description %> </p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>

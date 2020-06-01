@@ -1,0 +1,11 @@
+<div class="list-group" > 
+<% @bids.each do |item| %>
+	<a href ="<%= "/job/#{item.work.id}" %>" class="list-group-item list-group-item-action">
+	<div>
+	bid price : <%= item.amount%> <br>
+	bid title : <%= item.work.title%> <br>
+	bid amount : <%= item.work.amount%> <br>
+	</div>
+	</a>
+<% end %>
+</div>
